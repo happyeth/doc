@@ -1,177 +1,345 @@
 <template>
-  <section class="py-20 bg-gray-50">
+  <section class="py-20 bg-blue-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Header -->
       <div class="text-center mb-16">
+        <span class="inline-block px-4 py-1 text-sm font-semibold text-blue-600 bg-blue-100 rounded-full mb-4">
+          PRICING PLANS
+        </span>
         <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-          Simple, Transparent Pricing
+          Physician-Focused Pricing
         </h2>
         <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-600">
-          Choose the plan that fits your practice needs
+          Designed by doctors to maximize your time and revenue
         </p>
         
         <!-- Pricing Toggle -->
         <div class="mt-8 flex justify-center">
-          <PricingToggle 
-            v-model="billingCycle"
-            class="bg-white shadow-sm"
-          />
+          <div class="bg-white p-1 rounded-lg shadow-sm flex">
+            <button
+              @click="billingCycle = 'monthly'"
+              :class="{
+                'bg-gradient-to-r from-blue-500 to-teal-400 text-white': billingCycle === 'monthly',
+                'text-gray-700 hover:text-blue-600': billingCycle !== 'monthly'
+              }"
+              class="px-6 py-2 text-sm font-medium rounded-md transition-colors duration-300"
+            >
+              Monthly Billing
+            </button>
+            <button
+              @click="billingCycle = 'annual'"
+              :class="{
+                'bg-gradient-to-r from-blue-500 to-teal-400 text-white': billingCycle === 'annual',
+                'text-gray-700 hover:text-blue-600': billingCycle !== 'annual'
+              }"
+              class="px-6 py-2 text-sm font-medium rounded-md transition-colors duration-300"
+            >
+              Annual Billing
+            </button>
+          </div>
         </div>
-        <p v-if="showAnnualSavings" class="mt-3 text-sm text-indigo-600 font-medium">
+        <p v-if="showAnnualSavings" class="mt-3 text-sm text-blue-600 font-medium">
           Save 15% with annual billing
         </p>
       </div>
 
       <!-- Pricing Cards -->
       <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        <!-- Basic Plan -->
-        <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 hover:border-indigo-300 transition-all duration-300 transform hover:-translate-y-2">
-          <div class="p-6">
-            <h3 class="text-lg font-medium text-gray-900">Starter</h3>
-            <p class="mt-2 text-gray-600">For individual physicians getting started</p>
+        <!-- Resident Plan -->
+        <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-2">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-100 to-teal-100"></div>
+          <div class="p-8">
+            <div class="flex items-center mb-4">
+              <div class="bg-blue-100 p-2 rounded-lg">
+                <UserIcon class="h-6 w-6 text-blue-600" />
+              </div>
+              <h3 class="ml-3 text-xl font-bold text-gray-900">Resident</h3>
+            </div>
+            <p class="text-gray-600">For residents and fellows starting out</p>
             <div class="mt-8">
               <div class="flex items-baseline">
-                <span class="text-4xl font-extrabold text-gray-900">${{ pricing.starter[billingCycle].price }}</span>
+                <span class="text-4xl font-extrabold text-gray-900">${{ pricing.resident[billingCycle].price }}</span>
                 <span class="ml-1 text-lg font-medium text-gray-500">/{{ billingCycle }}</span>
               </div>
               <p v-if="billingCycle === 'annual'" class="mt-1 text-sm text-gray-500">
-                ${{ (pricing.starter[billingCycle].price / 12).toFixed(0) }} per month
+                ${{ (pricing.resident[billingCycle].price / 12).toFixed(0) }} per month
               </p>
             </div>
             <ul class="mt-8 space-y-3">
-              <li v-for="(feature, index) in pricing.starter.features" :key="index" class="flex">
-                <CheckCircleIcon class="h-5 w-5 text-indigo-500 flex-shrink-0" />
+              <li v-for="(feature, index) in pricing.resident.features" :key="index" class="flex">
+                <CheckCircleIcon class="h-5 w-5 text-blue-500 flex-shrink-0" />
                 <span class="ml-3 text-gray-600">{{ feature }}</span>
               </li>
             </ul>
           </div>
-          <div class="px-6 pb-8">
+          <div class="px-8 pb-8">
             <button 
-              @click="navigateTo('/signup?plan=starter')"
-              class="w-full px-4 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 shadow-sm"
+              @click="navigateTo('/signup?plan=resident')"
+              class="w-full px-4 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 shadow-lg hover:shadow-xl transition-all duration-300"
             >
               Get Started
             </button>
           </div>
-          <div v-if="popularPlan !== 'starter'" class="absolute top-0 right-0 bg-indigo-500 text-white text-xs font-semibold px-3 py-1 rounded-bl-lg">
-            Most Affordable
+          <div class="absolute top-0 right-0 bg-blue-500 text-white text-xs font-semibold px-3 py-1 rounded-bl-lg">
+            Resident Discount
           </div>
         </div>
 
-        <!-- Professional Plan (Popular) -->
-        <div class="relative bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-indigo-500 transform hover:-translate-y-2 transition-all duration-300 z-10">
-          <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
-          <div class="p-6">
+        <!-- Attending Plan (Popular) -->
+        <div class="relative bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-blue-500 transform hover:-translate-y-2 transition-all duration-300 z-10">
+          <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-blue-500 to-teal-500"></div>
+          <div class="p-8">
             <div class="flex justify-between items-start">
-              <div>
-                <h3 class="text-lg font-medium text-gray-900">Professional</h3>
-                <p class="mt-2 text-gray-600">For busy practitioners needing full support</p>
+              <div class="flex items-center">
+                <div class="bg-blue-100 p-2 rounded-lg">
+                  <UserGroupIcon class="h-6 w-6 text-blue-600" />
+                </div>
+                <h3 class="ml-3 text-xl font-bold text-gray-900">Attending</h3>
               </div>
-              <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                 Most Popular
               </span>
             </div>
+            <p class="mt-2 text-gray-600">For practicing physicians with full patient loads</p>
             <div class="mt-8">
               <div class="flex items-baseline">
-                <span class="text-4xl font-extrabold text-gray-900">${{ pricing.professional[billingCycle].price }}</span>
+                <span class="text-4xl font-extrabold text-gray-900">${{ pricing.attending[billingCycle].price }}</span>
                 <span class="ml-1 text-lg font-medium text-gray-500">/{{ billingCycle }}</span>
               </div>
               <p v-if="billingCycle === 'annual'" class="mt-1 text-sm text-gray-500">
-                ${{ (pricing.professional[billingCycle].price / 12).toFixed(0) }} per month
+                ${{ (pricing.attending[billingCycle].price / 12).toFixed(0) }} per month
               </p>
             </div>
             <ul class="mt-8 space-y-3">
-              <li v-for="(feature, index) in pricing.professional.features" :key="index" class="flex">
-                <CheckCircleIcon class="h-5 w-5 text-indigo-500 flex-shrink-0" />
+              <li v-for="(feature, index) in pricing.attending.features" :key="index" class="flex">
+                <CheckCircleIcon class="h-5 w-5 text-blue-500 flex-shrink-0" />
                 <span class="ml-3 text-gray-600">{{ feature }}</span>
               </li>
             </ul>
           </div>
-          <div class="px-6 pb-8">
+          <div class="px-8 pb-8">
             <button 
-              @click="navigateTo('/signup?plan=professional')"
-              class="w-full px-4 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 shadow-sm"
+              @click="navigateTo('/signup?plan=attending')"
+              class="w-full px-4 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 shadow-lg hover:shadow-xl transition-all duration-300"
             >
               Start Free Trial
             </button>
           </div>
+          <div class="absolute -top-3 right-4 bg-gradient-to-r from-blue-600 to-teal-500 text-white text-xs font-semibold px-3 py-1 rounded-lg shadow-md">
+            Save {{ billingCycle === 'annual' ? '15%' : '10%' }}
+          </div>
         </div>
 
-        <!-- Enterprise Plan -->
-        <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 hover:border-indigo-300 transition-all duration-300 transform hover:-translate-y-2">
-          <div class="p-6">
-            <h3 class="text-lg font-medium text-gray-900">Enterprise</h3>
-            <p class="mt-2 text-gray-600">For clinics and large practices</p>
+        <!-- Group Practice Plan -->
+        <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-2">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-100 to-teal-100"></div>
+          <div class="p-8">
+            <div class="flex items-center mb-4">
+              <div class="bg-blue-100 p-2 rounded-lg">
+                <BuildingLibraryIcon class="h-6 w-6 text-blue-600" />
+              </div>
+              <h3 class="ml-3 text-xl font-bold text-gray-900">Group Practice</h3>
+            </div>
+            <p class="text-gray-600">For clinics and multi-provider practices</p>
             <div class="mt-8">
               <div class="flex items-baseline">
-                <span class="text-4xl font-extrabold text-gray-900">${{ pricing.enterprise[billingCycle].price }}</span>
+                <span class="text-4xl font-extrabold text-gray-900">${{ pricing.group[billingCycle].price }}</span>
                 <span class="ml-1 text-lg font-medium text-gray-500">/{{ billingCycle }}</span>
               </div>
               <p v-if="billingCycle === 'annual'" class="mt-1 text-sm text-gray-500">
-                ${{ (pricing.enterprise[billingCycle].price / 12).toFixed(0) }} per month
+                ${{ (pricing.group[billingCycle].price / 12).toFixed(0) }} per month
               </p>
             </div>
             <ul class="mt-8 space-y-3">
-              <li v-for="(feature, index) in pricing.enterprise.features" :key="index" class="flex">
-                <CheckCircleIcon class="h-5 w-5 text-indigo-500 flex-shrink-0" />
+              <li v-for="(feature, index) in pricing.group.features" :key="index" class="flex">
+                <CheckCircleIcon class="h-5 w-5 text-blue-500 flex-shrink-0" />
                 <span class="ml-3 text-gray-600">{{ feature }}</span>
               </li>
             </ul>
           </div>
-          <div class="px-6 pb-8">
+          <div class="px-8 pb-8">
             <button 
               @click="navigateTo('/contact')"
-              class="w-full px-4 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 shadow-sm"
+              class="w-full px-4 py-3 border border-transparent text-base font-medium rounded-full text-blue-700 bg-blue-100 hover:bg-blue-200 shadow-lg hover:shadow-xl transition-all duration-300"
             >
               Contact Sales
             </button>
           </div>
-          <div v-if="pricing.enterprise.custom" class="absolute top-0 right-0 bg-purple-500 text-white text-xs font-semibold px-3 py-1 rounded-bl-lg">
+          <div class="absolute top-0 right-0 bg-teal-500 text-white text-xs font-semibold px-3 py-1 rounded-bl-lg">
             Custom Solutions
           </div>
         </div>
       </div>
 
+      <!-- Value Proposition -->
+      <div class="mt-20 bg-gradient-to-r from-blue-900 to-indigo-900 rounded-2xl shadow-xl overflow-hidden">
+        <div class="grid md:grid-cols-2">
+          <div class="p-12 text-white">
+            <h3 class="text-2xl font-bold mb-4">The doc2doc.health Advantage</h3>
+            <p class="text-blue-200 mb-6">
+              Our physician-led scribing service delivers more than just documentation - we provide clinical partnership that enhances your practice.
+            </p>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <div class="flex-shrink-0 bg-blue-700 p-1 rounded-full">
+                  <CheckCircleIcon class="h-5 w-5 text-blue-300" />
+                </div>
+                <span class="ml-3">Physician-trained scribes with clinical knowledge</span>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 bg-blue-700 p-1 rounded-full">
+                  <CheckCircleIcon class="h-5 w-5 text-blue-300" />
+                </div>
+                <span class="ml-3">Specialty-specific documentation expertise</span>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 bg-blue-700 p-1 rounded-full">
+                  <CheckCircleIcon class="h-5 w-5 text-blue-300" />
+                </div>
+                <span class="ml-3">HIPAA-compliant with military-grade security</span>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 bg-blue-700 p-1 rounded-full">
+                  <CheckCircleIcon class="h-5 w-5 text-blue-300" />
+                </div>
+                <span class="ml-3">Average 2.5 hours saved daily per provider</span>
+              </li>
+            </ul>
+          </div>
+          <div class="hidden md:block relative">
+            <img 
+              src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
+              alt="Doctor reviewing charts" 
+              class="w-full h-full object-cover"
+            >
+            <div class="absolute inset-0 bg-gradient-to-t from-blue-900/70 via-blue-900/20 to-transparent flex items-end p-8">
+              <div class="text-white">
+                <p class="text-lg font-medium">"doc2doc.health helped me see 4 more patients per day while reducing my burnout."</p>
+                <p class="mt-2 text-blue-200">— Dr. Michael Chen, Internal Medicine</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Comparison Table -->
-      <div class="mt-16 max-w-4xl mx-auto bg-white shadow-lg rounded-xl overflow-hidden border border-gray-200">
-        <div class="px-6 py-4 bg-gray-50 border-b border-gray-200">
-          <h3 class="text-lg font-medium text-gray-900">Plan Comparison</h3>
+      <div class="mt-20 max-w-5xl mx-auto bg-white shadow-lg rounded-2xl overflow-hidden border border-gray-200">
+        <div class="px-8 py-6 bg-gray-50 border-b border-gray-200">
+          <h3 class="text-xl font-bold text-gray-900">Plan Comparison</h3>
+          <p class="mt-1 text-gray-600">See how our plans match your practice needs</p>
         </div>
         <div class="divide-y divide-gray-200">
-          <div v-for="(row, index) in comparisonTable" :key="index" class="grid grid-cols-4 gap-4 p-6 items-center">
+          <div v-for="(row, index) in comparisonTable" :key="index" class="grid grid-cols-4 gap-6 p-6 items-center">
             <div class="font-medium text-gray-900">{{ row.feature }}</div>
             <div class="text-center">
-              <template v-if="row.starter === true">
-                <CheckCircleIcon class="h-5 w-5 text-indigo-500 mx-auto" />
+              <template v-if="row.resident === true">
+                <CheckCircleIcon class="h-6 w-6 text-blue-500 mx-auto" />
               </template>
-              <template v-else-if="row.starter === false">
-                <XCircleIcon class="h-5 w-5 text-gray-300 mx-auto" />
+              <template v-else-if="row.resident === false">
+                <XCircleIcon class="h-6 w-6 text-gray-300 mx-auto" />
               </template>
               <template v-else>
-                {{ row.starter }}
+                <span class="text-gray-700">{{ row.resident }}</span>
               </template>
             </div>
             <div class="text-center">
-              <template v-if="row.professional === true">
-                <CheckCircleIcon class="h-5 w-5 text-indigo-500 mx-auto" />
+              <template v-if="row.attending === true">
+                <CheckCircleIcon class="h-6 w-6 text-blue-500 mx-auto" />
               </template>
-              <template v-else-if="row.professional === false">
-                <XCircleIcon class="h-5 w-5 text-gray-300 mx-auto" />
+              <template v-else-if="row.attending === false">
+                <XCircleIcon class="h-6 w-6 text-gray-300 mx-auto" />
               </template>
               <template v-else>
-                {{ row.professional }}
+                <span class="text-gray-700">{{ row.attending }}</span>
               </template>
             </div>
             <div class="text-center">
-              <template v-if="row.enterprise === true">
-                <CheckCircleIcon class="h-5 w-5 text-indigo-500 mx-auto" />
+              <template v-if="row.group === true">
+                <CheckCircleIcon class="h-6 w-6 text-blue-500 mx-auto" />
               </template>
-              <template v-else-if="row.enterprise === false">
-                <XCircleIcon class="h-5 w-5 text-gray-300 mx-auto" />
+              <template v-else-if="row.group === false">
+                <XCircleIcon class="h-6 w-6 text-gray-300 mx-auto" />
               </template>
               <template v-else>
-                {{ row.enterprise }}
+                <span class="text-gray-700">{{ row.group }}</span>
               </template>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROI Calculator -->
+      <div class="mt-20 bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
+        <div class="grid md:grid-cols-2">
+          <div class="p-8 md:p-12">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Calculate Your Potential Savings</h3>
+            <p class="text-gray-600 mb-6">
+              See how much time and revenue you could gain with doc2doc.health
+            </p>
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Patients per day</label>
+                <input 
+                  v-model="calculator.patients" 
+                  type="range" 
+                  min="10" 
+                  max="50" 
+                  step="5"
+                  class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                >
+                <div class="flex justify-between text-xs text-gray-500 mt-1">
+                  <span>10</span>
+                  <span>50+</span>
+                </div>
+                <div class="text-center font-medium text-blue-600 mt-1">{{ calculator.patients }} patients</div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Current charting time (hrs/day)</label>
+                <input 
+                  v-model="calculator.hours" 
+                  type="range" 
+                  min="1" 
+                  max="5" 
+                  step="0.5"
+                  class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                >
+                <div class="flex justify-between text-xs text-gray-500 mt-1">
+                  <span>1</span>
+                  <span>5+</span>
+                </div>
+                <div class="text-center font-medium text-blue-600 mt-1">{{ calculator.hours }} hours</div>
+              </div>
+            </div>
+            <div class="mt-8 p-4 bg-blue-50 rounded-lg border border-blue-100">
+              <div class="text-sm text-gray-700 mb-2">Estimated with doc2doc.health:</div>
+              <div class="flex justify-between items-center">
+                <div>
+                  <div class="text-xs text-gray-500">Time Saved</div>
+                  <div class="text-lg font-bold text-blue-600">{{ calculatedSavings.hoursSaved }} hrs/day</div>
+                </div>
+                <div>
+                  <div class="text-xs text-gray-500">Revenue Potential*</div>
+                  <div class="text-lg font-bold text-blue-600">${{ calculatedSavings.revenue }}/day</div>
+                </div>
+              </div>
+              <div class="mt-2 text-xs text-gray-500">*Based on seeing 2 additional patients at $150/visit</div>
+            </div>
+          </div>
+          <div class="bg-blue-50 p-8 md:p-12 flex items-center justify-center">
+            <div class="text-center">
+              <div class="mx-auto h-24 w-24 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                <ClockIcon class="h-12 w-12 text-blue-600" />
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Time is Money</h3>
+              <p class="text-gray-600 mb-4">
+                Our physicians save an average of 2.5 hours daily on documentation
+              </p>
+              <button 
+                @click="navigateTo('/demo')"
+                class="px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                Schedule Demo
+              </button>
             </div>
           </div>
         </div>
@@ -179,22 +347,32 @@
 
       <!-- FAQ Section -->
       <div class="mt-20 max-w-3xl mx-auto">
-        <h3 class="text-2xl font-bold text-center text-gray-900 mb-8">Frequently Asked Questions</h3>
+        <div class="text-center mb-12">
+          <span class="inline-block px-4 py-1 text-sm font-semibold text-blue-600 bg-blue-100 rounded-full mb-4">
+            HAVE QUESTIONS?
+          </span>
+          <h3 class="text-2xl font-bold text-gray-900">Frequently Asked Questions</h3>
+        </div>
         <div class="space-y-4">
-          <div v-for="(faq, index) in faqs" :key="index" class="bg-white border border-gray-200 rounded-lg overflow-hidden">
+          <div 
+            v-for="(faq, index) in faqs" 
+            :key="index" 
+            class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-md transition-shadow duration-300"
+          >
             <button 
               @click="toggleFAQ(index)"
-              class="w-full px-6 py-4 text-left focus:outline-none"
+              class="w-full px-6 py-4 text-left focus:outline-none flex justify-between items-center"
             >
-              <div class="flex items-center justify-between">
-                <span class="font-medium text-gray-900">{{ faq.question }}</span>
-                <ChevronDownIcon 
-                  class="h-5 w-5 text-gray-500 transition-transform duration-200"
-                  :class="{ 'transform rotate-180': faq.open }"
-                />
-              </div>
+              <span class="font-medium text-gray-900">{{ faq.question }}</span>
+              <ChevronDownIcon 
+                class="h-5 w-5 text-gray-500 transition-transform duration-200"
+                :class="{ 'transform rotate-180': faq.open }"
+              />
             </button>
-            <div v-show="faq.open" class="px-6 pb-4 text-gray-600">
+            <div 
+              v-show="faq.open" 
+              class="px-6 pb-4 text-gray-600 transition-all duration-300"
+            >
               {{ faq.answer }}
             </div>
           </div>
@@ -202,13 +380,21 @@
       </div>
 
       <!-- Bottom CTA -->
-      <div class="mt-20 text-center">
-        <h3 class="text-xl font-medium text-gray-900">Need something custom?</h3>
-        <p class="mt-2 text-gray-600">We can create a tailored solution for your practice</p>
-        <div class="mt-6">
+      <div class="mt-20 text-center bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-12 text-white">
+        <h3 class="text-2xl font-bold mb-4">Ready to transform your documentation workflow?</h3>
+        <p class="text-xl text-blue-100 max-w-2xl mx-auto mb-8">
+          Join hundreds of physicians who trust doc2doc.health with their clinical documentation
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <button 
+            @click="navigateTo('/signup')"
+            class="px-8 py-4 border border-transparent text-base font-medium rounded-full text-blue-600 bg-white hover:bg-gray-100 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+          >
+            Start Free Trial
+          </button>
           <button 
             @click="navigateTo('/contact')"
-            class="px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 shadow-sm"
+            class="px-8 py-4 border-2 border-white text-base font-medium rounded-full text-white hover:bg-blue-700/30 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
           >
             Contact Our Team
           </button>
@@ -220,100 +406,145 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-import { CheckCircleIcon, XCircleIcon, ChevronDownIcon } from '@heroicons/vue/24/outline'
-import PricingToggle from '@/components/PricingToggle.vue'
+import { 
+  CheckCircleIcon, 
+  XCircleIcon, 
+  ChevronDownIcon,
+  UserIcon,
+  UserGroupIcon,
+  BuildingLibraryIcon,
+  ClockIcon
+} from '@heroicons/vue/24/outline'
 
 const billingCycle = ref('monthly') // 'monthly' or 'annual'
 
 const showAnnualSavings = computed(() => billingCycle.value === 'annual')
 
-const popularPlan = ref('professional')
-
 const pricing = {
-  starter: {
-    monthly: { price: 99 },
-    annual: { price: 999 },
+  resident: {
+    monthly: { price: 199 },
+    annual: { price: 1999 },
     features: [
-      'Up to 20 notes/month',
-      'AI-supported note editing',
+      'Up to 30 notes/month',
+      'Physician-assisted documentation',
       'Basic inbox management',
       'Email support',
-      '1-2 day turnaround'
+      '24-48 hour turnaround',
+      'Resident/Fellow discount'
     ]
   },
-  professional: {
-    monthly: { price: 299 },
-    annual: { price: 2999 },
+  attending: {
+    monthly: { price: 499 },
+    annual: { price: 4999 },
     features: [
-      'Up to 100 notes/month',
-      'Priority AI-supported editing',
+      'Up to 120 notes/month',
+      'Priority physician documentation',
       'Full inbox & lab tracking',
       'Chart preparation',
       'Phone & email support',
       '12-24 hour turnaround',
-      'Dedicated MD scribe'
+      'Dedicated MD scribe',
+      'Specialty-matched support'
     ]
   },
-  enterprise: {
+  group: {
     monthly: { price: 'Custom' },
     annual: { price: 'Custom' },
     features: [
       'Unlimited notes',
-      'All Professional features',
       'Multiple provider support',
       'Custom workflows',
       '24/7 priority support',
       'Same-day turnaround',
-      'Dedicated account manager'
-    ],
-    custom: true
+      'Dedicated account manager',
+      'EMR integration',
+      'Analytics dashboard'
+    ]
   }
 }
 
 const comparisonTable = [
-  { feature: 'AI-Supported Note Editing', starter: true, professional: true, enterprise: true },
-  { feature: 'Inbox & Lab Tracking', starter: 'Basic', professional: 'Full', enterprise: 'Full + Priority' },
-  { feature: 'Chart Preparation', starter: false, professional: true, enterprise: true },
-  { feature: 'Dedicated MD Scribe', starter: false, professional: true, enterprise: true },
-  { feature: 'Support Channels', starter: 'Email', professional: 'Email + Phone', enterprise: '24/7 Priority' },
-  { feature: 'Turnaround Time', starter: '1-2 days', professional: '12-24 hours', enterprise: 'Same day' },
-  { feature: 'Monthly Notes Included', starter: '20', professional: '100', enterprise: 'Unlimited' },
-  { feature: 'Multiple Providers', starter: false, professional: 'Add-on', enterprise: true }
+  { feature: 'Physician Documentation', resident: true, attending: true, group: true },
+  { feature: 'Notes Included', resident: '30/mo', attending: '120/mo', group: 'Unlimited' },
+  { feature: 'Inbox & Lab Tracking', resident: 'Basic', attending: 'Full', group: 'Full + Priority' },
+  { feature: 'Chart Preparation', resident: false, attending: true, group: true },
+  { feature: 'Dedicated MD Scribe', resident: false, attending: true, group: true },
+  { feature: 'Support Channels', resident: 'Email', attending: 'Email + Phone', group: '24/7 Priority' },
+  { feature: 'Turnaround Time', resident: '24-48 hrs', attending: '12-24 hrs', group: 'Same day' },
+  { feature: 'Multiple Providers', resident: false, attending: 'Add-on', group: true },
+  { feature: 'EMR Integration', resident: 'Basic', attending: 'Advanced', group: 'Full Custom' }
 ]
 
 const faqs = ref([
   {
-    question: 'What happens if I exceed my monthly note limit?',
-    answer: 'We\'ll automatically charge $5 per additional note for Starter plans and $3 per additional note for Professional plans. Enterprise plans have no limits.',
+    question: 'How does doc2doc.health differ from traditional scribes?',
+    answer: 'Our scribes are all physicians or medical graduates with clinical experience, providing higher quality documentation with true medical understanding. We combine this expertise with AI efficiency for faster turnaround.',
     open: false
   },
   {
-    question: 'Can I switch between monthly and annual billing?',
-    answer: 'Yes, you can change your billing cycle at any time from your account settings. Changes will take effect at your next billing date.',
+    question: 'What specialties do you support?',
+    answer: 'We support all major specialties including Family Medicine, Internal Medicine, Pediatrics, Cardiology, Orthopedics, Neurology, and more. Each scribe is matched to your specialty for optimal documentation.',
     open: false
   },
   {
-    question: 'Is there a contract or long-term commitment?',
-    answer: 'No, all plans are month-to-month or annual with no long-term contracts. You can cancel anytime.',
+    question: 'Is there a long-term contract?',
+    answer: 'No, all plans are month-to-month or annual with no long-term commitments. You can cancel anytime with 30 days notice.',
     open: false
   },
   {
     question: 'How does the free trial work?',
-    answer: 'The 14-day free trial gives you full access to the Professional plan features. No credit card required to start.',
+    answer: 'Our 14-day free trial gives you full access to the Attending plan features with up to 20 notes. No credit card required to start.',
     open: false
   },
   {
-    question: 'Is Welkesa HIPAA compliant?',
-    answer: 'Absolutely. We maintain strict HIPAA compliance with encrypted data, BAAs, and secure workflows to protect patient information.',
+    question: 'Is doc2doc.health HIPAA compliant?',
+    answer: 'Absolutely. We maintain strict HIPAA compliance with encrypted data, BAAs, and secure workflows. All scribes undergo HIPAA training and background checks.',
+    open: false
+  },
+  {
+    question: 'What EMR systems do you integrate with?',
+    answer: 'We work with all major EMRs including Epic, Cerner, Meditech, Athena, eClinicalWorks, and more. Our team will configure the optimal workflow for your system.',
     open: false
   }
 ])
 
+const calculator = ref({
+  patients: 20,
+  hours: 2.5
+})
+
+const calculatedSavings = computed(() => {
+  return {
+    hoursSaved: (calculator.value.hours * 0.6).toFixed(1), // 60% time savings
+    revenue: (calculator.value.patients * 0.1 * 150).toFixed(0) // 10% more patients at $150/visit
+  }
+})
+
 const toggleFAQ = (index) => {
   faqs.value[index].open = !faqs.value[index].open
+}
+
+const navigateTo = (path) => {
+  // Router navigation logic here
+  console.log(`Navigating to: ${path}`)
 }
 </script>
 
 <style scoped>
-/* Add any custom styles here if needed */
+/* Custom animations */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
 </style>

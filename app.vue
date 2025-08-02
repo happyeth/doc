@@ -1,11 +1,15 @@
 <template>
+  <Navbar v-if="!isLoginPage" />
   <div>
-    <Navbar />
+    
     <NuxtPage />  <!-- Auto-injects route-matched pages -->
-    <Footer />
+    
   </div>
+  <Footer />
 </template>
 
 <script setup>
 // No backend needed
 </script>
+
+
