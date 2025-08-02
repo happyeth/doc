@@ -140,7 +140,7 @@ const auth = useAuth();
 const demoAccounts = [
   { 
     email: 'happyeth@gmail.com', 
-    password: 'Patient123', 
+    password: 'User123', 
     role: 'Doctor', 
     name: 'Dr. Happy Patient',
     specialty: 'General Practice'
