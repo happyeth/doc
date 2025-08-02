@@ -12,7 +12,7 @@
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div class="text-white">
             <div class="flex items-center mb-6">
-              <span class="text-2xl font-bold">Welkesa</span>
+              <span class="text-2xl font-bold">doc2doc.health</span>
               <span class="ml-3 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-medium">Physician-Led</span>
             </div>
             <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
@@ -48,7 +48,7 @@
               >
               <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 via-transparent to-transparent flex items-end p-8">
                 <div class="text-white">
-                  <p class="text-lg font-medium">"Welkesa reduced my charting time from 3 hours to just 45 minutes daily"</p>
+                  <p class="text-lg font-medium">"doc2doc.health reduced my charting time from 3 hours to just 45 minutes daily"</p>
                   <p class="mt-2 text-blue-200">— Dr. Sarah Johnson, Family Medicine</p>
                 </div>
               </div>
@@ -69,7 +69,7 @@
       </div>
     </section>
 
-    <!-- About Welkesa -->
+    <!-- About doc2doc.health -->
     <section class="py-20 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
@@ -88,7 +88,7 @@
               By Doctors, For Doctors
             </h2>
             <p class="mt-4 text-lg text-gray-600">
-              At Welkesa, we provide virtual medical scribing services delivered exclusively by physicians and medical graduates. Our scribes are not just trained in documentation—they are trained in medicine.
+              At doc2doc.health, we provide virtual medical scribing services delivered exclusively by physicians and medical graduates. Our scribes are not just trained in documentation—they are trained in medicine.
             </p>
             <p class="mt-4 text-lg text-gray-600">
               With clinical experience and deep understanding of patient care, we bring unmatched accuracy, efficiency, and trust to every chart.
@@ -166,73 +166,6 @@
                   <span class="text-gray-700">HIPAA-compliant, secure, and confidential service</span>
                 </li>
               </ul>
-<<<<<<< HEAD
-              <p class="mt-6 text-gray-600">
-                We work quietly in the background—so your focus stays on the patient, not the computer.
-=======
-              
-              <div class="mt-6 text-center">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
-                  {{ service.turnaround }}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Feature Spotlight -->
-    <section class="py-20 bg-gray-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="lg:grid lg:grid-cols-12 lg:gap-16">
-          <div class="lg:col-span-6">
-            <div class="relative">
-              <!-- Floating cards animation -->
-              <div class="relative max-w-md mx-auto">
-                <div class="absolute -top-8 -left-8 w-full h-full bg-indigo-100 rounded-2xl"></div>
-                <div class="relative rounded-2xl bg-white shadow-xl overflow-hidden border border-gray-200">
-                  <img 
-                    src="data:image/jpeg;base64,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" 
-                    alt="AI Note Editing Interface"
-                    class="w-full h-auto"
-                  >
-                </div>
-              </div>
-              
-              <div class="hidden lg:block absolute -bottom-8 -right-8 w-64 h-64">
-                <div class="relative w-full h-full">
-                  <div 
-                    v-for="(card, index) in floatingCards"
-                    :key="index"
-                    class="absolute bg-white p-4 rounded-lg shadow-md border border-gray-200 transition-all duration-1000 ease-in-out"
-                    :class="card.class"
-                    :style="{ zIndex: 10 - index }"
-                  >
-                    <div class="flex items-center">
-                      <div class="flex-shrink-0 bg-indigo-100 p-2 rounded-full">
-                        <component :is="card.icon" class="h-5 w-5 text-indigo-600" />
-                      </div>
-                      <div class="ml-3">
-                        <p class="text-sm font-medium text-gray-900">{{ card.title }}</p>
-                        <p class="text-xs text-gray-500">{{ card.value }}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="mt-16 lg:mt-0 lg:col-span-6">
-            <div class="lg:pl-12">
-              <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                AI-Powered Clinical Documentation
-              </h2>
-              <p class="mt-4 text-lg text-gray-600">
-                Our unique combination of physician expertise and AI technology delivers accurate, contextual medical notes that save you hours each day.
->>>>>>> 6fbbe460fa5a5ecec7702898f6b9548b43e16804
-              </p>
             </div>
             <div class="bg-blue-50 p-8 md:p-12 flex items-center justify-center">
               <img 
@@ -505,7 +438,7 @@
                   </div>
                   <div class="mt-3 text-center sm:mt-5">
                     <DialogTitle as="h3" class="text-base font-semibold leading-6 text-gray-900">
-                      Welkesa Service Demo
+                      doc2doc.health Service Demo
                     </DialogTitle>
                   </div>
                 </div>
@@ -654,47 +587,7 @@ const clients = ref([
     examples: [
       'High-volume documentation',
       'Procedure note support',
-      'Referral management',
-      'Quality measure tracking'
-    ]
-  },
-  {
-    title: 'Primary Care',
-    description: 'Full-spectrum primary care support',
-    icon: UserIcon,
-    examples: [
-      'Preventive care documentation',
-      'Chronic disease management',
-      'Medication reconciliation',
-      'Care coordination'
-    ]
-  },
-  {
-    title: 'Specialists',
-    description: 'Specialty-specific documentation',
-    icon: HomeModernIcon,
-    examples: [
-      'Specialty templates',
-      'Procedure documentation',
-      'Consult notes',
-      'Diagnosis-specific coding'
-    ]
-  }
-])
-
-const openServiceModal = (index) => {
-  selectedService.value = services.value[index]
-  serviceModalOpen.value = true
-}
-
-const openVideoModal = () => {
-  videoModalOpen.value = true
-}
-
-const navigateTo = (path) => {
-  // Router navigation logic here
-  console.log(`Navigating to: ${path}`)
-}
+]}])
 </script>
 
 <style>
