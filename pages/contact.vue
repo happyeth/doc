@@ -135,7 +135,7 @@
               </p>
               <div class="relative group">
                 <a 
-                  href="https://calendly.com/doc2doc-health/demo" 
+                  href="https://calendly.com/happyeth321/30min" 
                   target="_blank"
                   class="inline-flex items-center justify-center w-full px-6 py-3 border border-transparent text-lg font-medium rounded-lg text-white bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 shadow-lg hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-1"
                 >
