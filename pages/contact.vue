@@ -118,6 +118,7 @@
               <p class="text-navy-600 mb-6">
                 See doc2doc.health in action with a personalized 30-minute demo. We'll show you how our physician-led virtual scribes can save you 2+ hours daily.
               </p>
+<<<<<<< HEAD
               <a 
                 href="https://calendly.com/doc2doc-health/demo" 
                 target="_blank"
@@ -126,6 +127,19 @@
                 Book a Demo
                 <ArrowRightIcon class="ml-2 h-5 w-5" />
               </a>
+=======
+              <div class="relative group">
+                <a 
+                  href="https://calendly.com/happyeth321/30min" 
+                  target="_blank"
+                  class="inline-flex items-center justify-center w-full px-6 py-3 border border-transparent text-lg font-medium rounded-lg text-white bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 shadow-lg hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-1"
+                >
+                  Book a Demo
+                  <ArrowRightIcon class="ml-2 h-5 w-5 group-hover:animate-bounce-right" />
+                </a>
+                <div class="absolute -bottom-2 -right-2 w-full h-full rounded-lg bg-blue-200 -z-10 group-hover:animate-pulse-slow"></div>
+              </div>
+>>>>>>> 2e6393cf27cbcb5162d7a2d90250b8982a1ef405
             </div>
             
             <!-- Contact Info Card -->
