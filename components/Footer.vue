@@ -5,7 +5,7 @@
         <!-- Column 1: Logo & Description -->
         <div class="space-y-6">
           <NuxtLink to="/" class="text-2xl font-bold text-white hover:text-indigo-400 transition-colors duration-300">
-            Welkesa
+            Welkesa LLC
           </NuxtLink>
           <p class="text-gray-400 text-sm leading-relaxed">
             AI-Smart. Clinically Sharp. Your Virtual Scribe is an MD.
@@ -110,7 +110,7 @@ const quickLinks = [
   { name: 'Home', path: '/' },
   { name: 'About Us', path: '/about' },
   { name: 'Services', path: '/services' },
-  { name: 'Pricing', path: '/pricing' },
+  { name: 'Testimonials', path: '/testimonials' },
   { name: 'Contact', path: '/contact' }
 ];
 

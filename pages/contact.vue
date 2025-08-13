@@ -1,83 +1,68 @@
 <template>
   <div class="bg-white">
-    <!-- Hero Section with Floating Particles -->
-    <section class="relative bg-gradient-to-br from-blue-900 to-indigo-900 overflow-hidden">
-      <!-- Floating particles background -->
-      <div class="absolute inset-0 z-0 opacity-20">
-        <div v-for="i in 30" :key="i" 
-             class="absolute rounded-full bg-blue-200 opacity-40"
-             :style="{
-               width: `${Math.random() * 20 + 5}px`,
-               height: `${Math.random() * 20 + 5}px`,
-               left: `${Math.random() * 100}%`,
-               top: `${Math.random() * 100}%`,
-               animation: `float ${Math.random() * 10 + 10}s linear infinite`,
-               animationDelay: `${Math.random() * 5}s`
-             }"></div>
-      </div>
-
-      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 z-10">
-        <div class="text-center">
-          <div class="flex items-center justify-center mb-6">
-            <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-teal-300">doc2doc.health</span>
-            <span class="ml-3 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-medium">Physician-Led</span>
-          </div>
-          <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            <span class="block">Let's Transform</span>
-            <span class="block bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-teal-300">Your Documentation</span>
-          </h1>
-          <p class="mt-6 max-w-lg mx-auto text-xl text-blue-100">
-            Reach out to learn how our physician-led virtual scribes can save you hours each week.
-          </p>
+    <!-- Hero Section -->
+    <section class="relative bg-navy-900 text-white overflow-hidden">
+      <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1576091160399-112ba8a25d16?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80')] bg-cover bg-center opacity-20"></div>
+      <div class="relative max-w-7xl mx-auto px-6 py-24 sm:py-32 lg:px-8 text-center">
+        <div class="flex items-center justify-center mb-6">
+          <span class="text-2xl font-bold text-green-400">doc2doc.health</span>
+          <span class="ml-3 px-3 py-1 rounded-full bg-green-900/20 text-green-400 text-xs font-medium">Physician-Led</span>
         </div>
+        <h1 class="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl mb-6">
+          <span class="block">Let's Transform</span>
+          <span class="block text-green-400">Your Documentation</span>
+        </h1>
+        <p class="text-xl text-navy-100 max-w-3xl mx-auto">
+          Reach out to learn how our physician-led virtual scribes can save you hours each week.
+        </p>
       </div>
     </section>
 
     <!-- Contact Form Section -->
     <section class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="lg:grid lg:grid-cols-2 lg:gap-16">
           <!-- Contact Form -->
           <div class="mb-16 lg:mb-0">
-            <div class="bg-white p-8 rounded-2xl shadow-2xl border border-gray-100 hover:shadow-3xl transition-all duration-500">
-              <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                <ChatBubbleLeftRightIcon class="h-8 w-8 text-blue-600 mr-3" />
+            <div class="bg-white p-8 rounded-2xl shadow-lg border border-navy-100">
+              <h2 class="text-2xl font-bold text-navy-900 mb-6 flex items-center">
+                <ChatBubbleLeftRightIcon class="h-8 w-8 text-green-500 mr-3" />
                 Send us a message
               </h2>
               <form class="space-y-6">
                 <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                   <div>
-                    <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
+                    <label for="first-name" class="block text-sm font-medium text-navy-700">First name</label>
                     <input 
                       type="text" 
                       id="first-name" 
-                      class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-3 px-4 border transition-all duration-300"
+                      class="mt-1 block w-full rounded-lg border-navy-200 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 px-4 border"
                     >
                   </div>
                   <div>
-                    <label for="last-name" class="block text-sm font-medium text-gray-700">Last name</label>
+                    <label for="last-name" class="block text-sm font-medium text-navy-700">Last name</label>
                     <input 
                       type="text" 
                       id="last-name" 
-                      class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-3 px-4 border transition-all duration-300"
+                      class="mt-1 block w-full rounded-lg border-navy-200 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 px-4 border"
                     >
                   </div>
                 </div>
                 
                 <div>
-                  <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                  <label for="email" class="block text-sm font-medium text-navy-700">Email</label>
                   <input 
                     type="email" 
                     id="email" 
-                    class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-3 px-4 border transition-all duration-300"
+                    class="mt-1 block w-full rounded-lg border-navy-200 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 px-4 border"
                   >
                 </div>
                 
                 <div>
-                  <label for="practice-type" class="block text-sm font-medium text-gray-700">Specialty</label>
+                  <label for="practice-type" class="block text-sm font-medium text-navy-700">Specialty</label>
                   <select 
                     id="practice-type" 
-                    class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-3 px-4 border transition-all duration-300"
+                    class="mt-1 block w-full rounded-lg border-navy-200 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 px-4 border"
                   >
                     <option>Select your specialty</option>
                     <option>Primary Care</option>
@@ -90,11 +75,11 @@
                 </div>
                 
                 <div>
-                  <label for="message" class="block text-sm font-medium text-gray-700">How can we help?</label>
+                  <label for="message" class="block text-sm font-medium text-navy-700">How can we help?</label>
                   <textarea 
                     id="message" 
                     rows="4" 
-                    class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-3 px-4 border transition-all duration-300"
+                    class="mt-1 block w-full rounded-lg border-navy-200 shadow-sm focus:border-green-500 focus:ring-green-500 py-3 px-4 border"
                   ></textarea>
                 </div>
                 
@@ -102,17 +87,17 @@
                   <input 
                     id="privacy-policy" 
                     type="checkbox" 
-                    class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    class="h-4 w-4 rounded border-navy-300 text-green-600 focus:ring-green-500"
                   >
-                  <label for="privacy-policy" class="ml-2 block text-sm text-gray-700">
-                    I agree to the <a href="#" class="text-blue-600 hover:text-blue-500">Privacy Policy</a>
+                  <label for="privacy-policy" class="ml-2 block text-sm text-navy-700">
+                    I agree to the <a href="#" class="text-green-600 hover:text-green-500">Privacy Policy</a>
                   </label>
                 </div>
                 
                 <div>
                   <button 
                     type="submit" 
-                    class="w-full flex justify-center items-center py-3 px-6 border border-transparent rounded-lg shadow-lg text-lg font-medium text-white bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
+                    class="w-full flex justify-center items-center py-3 px-6 border border-transparent rounded-lg shadow-md text-lg font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                   >
                     Send Message
                     <PaperAirplaneIcon class="ml-2 h-5 w-5" />
@@ -125,80 +110,77 @@
           <!-- Contact Info & Demo -->
           <div class="space-y-8">
             <!-- Demo Card -->
-            <div class="bg-white p-8 rounded-2xl shadow-2xl border-2 border-blue-100 hover:border-blue-300 transition-all duration-500">
-              <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                <VideoCameraIcon class="h-8 w-8 text-blue-600 mr-3" />
+            <div class="bg-white p-8 rounded-2xl shadow-lg border-2 border-green-100">
+              <h2 class="text-2xl font-bold text-navy-900 mb-6 flex items-center">
+                <VideoCameraIcon class="h-8 w-8 text-green-500 mr-3" />
                 Schedule a demo
               </h2>
-              <p class="text-gray-600 mb-6">
+              <p class="text-navy-600 mb-6">
                 See doc2doc.health in action with a personalized 30-minute demo. We'll show you how our physician-led virtual scribes can save you 2+ hours daily.
               </p>
-              <div class="relative group">
-                <a 
-                  href="https://calendly.com/doc2doc-health/demo" 
-                  target="_blank"
-                  class="inline-flex items-center justify-center w-full px-6 py-3 border border-transparent text-lg font-medium rounded-lg text-white bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 shadow-lg hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-1"
-                >
-                  Book a Demo
-                  <ArrowRightIcon class="ml-2 h-5 w-5 group-hover:animate-bounce-right" />
-                </a>
-                <div class="absolute -bottom-2 -right-2 w-full h-full rounded-lg bg-blue-200 -z-10 group-hover:animate-pulse-slow"></div>
-              </div>
+              <a 
+                href="https://calendly.com/doc2doc-health/demo" 
+                target="_blank"
+                class="inline-flex items-center justify-center w-full px-6 py-3 border border-transparent text-lg font-medium rounded-lg text-white bg-green-600 hover:bg-green-700 shadow-md"
+              >
+                Book a Demo
+                <ArrowRightIcon class="ml-2 h-5 w-5" />
+              </a>
             </div>
             
             <!-- Contact Info Card -->
-            <div class="bg-white p-8 rounded-2xl shadow-2xl border border-gray-100 hover:shadow-3xl transition-all duration-500">
-              <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                <InformationCircleIcon class="h-8 w-8 text-blue-600 mr-3" />
+            <div class="bg-white p-8 rounded-2xl shadow-lg border border-navy-100">
+              <h2 class="text-2xl font-bold text-navy-900 mb-6 flex items-center">
+                <InformationCircleIcon class="h-8 w-8 text-green-500 mr-3" />
                 Contact information
               </h2>
               <div class="space-y-6">
-                <div class="flex items-start p-4 rounded-xl hover:bg-blue-50 transition-all duration-300">
-                  <div class="flex-shrink-0 bg-blue-100 p-3 rounded-full">
-                    <PhoneIcon class="h-6 w-6 text-blue-600" />
+                <div class="flex items-start p-4 rounded-xl hover:bg-green-50 transition-colors">
+                  <div class="flex-shrink-0 bg-green-100 p-3 rounded-full">
+                    <PhoneIcon class="h-6 w-6 text-green-600" />
                   </div>
                   <div class="ml-4">
-                    <h3 class="text-lg font-medium text-gray-900">Phone</h3>
-                    <p class="text-gray-600">(555) DOC-2DOC</p>
+                    <h3 class="text-lg font-medium text-navy-900">Phone</h3>
+                    <p class="text-navy-600">(555) DOC-2DOC</p>
                   </div>
                 </div>
                 
-                <div class="flex items-start p-4 rounded-xl hover:bg-blue-50 transition-all duration-300">
-                  <div class="flex-shrink-0 bg-blue-100 p-3 rounded-full">
-                    <EnvelopeIcon class="h-6 w-6 text-blue-600" />
+                <div class="flex items-start p-4 rounded-xl hover:bg-green-50 transition-colors">
+                  <div class="flex-shrink-0 bg-green-100 p-3 rounded-full">
+                    <EnvelopeIcon class="h-6 w-6 text-green-600" />
                   </div>
                   <div class="ml-4">
-                    <h3 class="text-lg font-medium text-gray-900">Email</h3>
-                    <p class="text-gray-600">hello@doc2doc.health</p>
+                    <h3 class="text-lg font-medium text-navy-900">Email</h3>
+                    <p class="text-navy-600">hello@doc2doc.health</p>
                   </div>
                 </div>
                 
-                <div class="flex items-start p-4 rounded-xl hover:bg-blue-50 transition-all duration-300">
-                  <div class="flex-shrink-0 bg-blue-100 p-3 rounded-full">
-                    <MapPinIcon class="h-6 w-6 text-blue-600" />
+                <div class="flex items-start p-4 rounded-xl hover:bg-green-50 transition-colors">
+                  <div class="flex-shrink-0 bg-green-100 p-3 rounded-full">
+                    <MapPinIcon class="h-6 w-6 text-green-600" />
                   </div>
                   <div class="ml-4">
-                    <h3 class="text-lg font-medium text-gray-900">Headquarters</h3>
-                    <p class="text-gray-600">123 Medical Innovation Drive<br>Boston, MA 02115</p>
+                    <h3 class="text-lg font-medium text-navy-900">Headquarters</h3>
+                    <p class="text-navy-600">123 Medical Innovation Drive<br>Boston, MA 02115</p>
                   </div>
                 </div>
               </div>
               
               <!-- Social Media -->
-              <div class="mt-8 pt-6 border-t border-gray-200">
-                <h3 class="text-lg font-medium text-gray-900 mb-4">Connect with us</h3>
+              <div class="mt-8 pt-6 border-t border-navy-200">
+                <h3 class="text-lg font-medium text-navy-900 mb-4">Connect with us</h3>
                 <div class="flex space-x-4">
-                  <a href="#" class="text-gray-400 hover:text-blue-600 transition-colors duration-300">
+                  <a href="#" class="text-navy-400 hover:text-green-600">
                     <span class="sr-only">LinkedIn</span>
-                    <LinkedInIcon class="h-6 w-6 hover:scale-110 transition-transform duration-300" />
+                    <LinkedInIcon class="h-6 w-6" />
                   </a>
-                  <a href="#" class="text-gray-400 hover:text-blue-600 transition-colors duration-300">
+                  <a href="#" class="text-navy-400 hover:text-green-600">
                     <span class="sr-only">Twitter</span>
-                    <TwitterIcon class="h-6 w-6 hover:scale-110 transition-transform duration-300" />
+                    <TwitterIcon class="h-6 w-6" />
                   </a>
-                  <a href="#" class="text-gray-400 hover:text-blue-600 transition-colors duration-300">
+                  <a href="#" class="text-navy-400 hover:text-green-600">
                     <span class="sr-only">Facebook</span>
-                    <FacebookIcon class="h-6 w-6 hover:scale-110 transition-transform duration-300" />
+                    <FacebookIcon class="h-6 w-6" />
                   </a>
                 </div>
               </div>
@@ -209,13 +191,13 @@
     </section>
 
     <!-- Testimonial Section -->
-    <section class="py-20 bg-blue-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="py-20 bg-navy-50">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="text-center mb-16">
-          <span class="inline-block px-4 py-1 text-sm font-semibold text-blue-600 bg-blue-100 rounded-full mb-4">
+          <span class="inline-block px-4 py-2 text-sm font-semibold text-green-600 bg-green-100 rounded-full mb-4">
             TRUSTED BY PHYSICIANS
           </span>
-          <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+          <h2 class="text-3xl font-bold text-navy-900 sm:text-4xl">
             What Our Clients Say
           </h2>
         </div>
@@ -224,7 +206,7 @@
           <div 
             v-for="(testimonial, index) in testimonials"
             :key="index"
-            class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-3"
+            class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow"
           >
             <div class="flex items-center mb-4">
               <img 
@@ -233,15 +215,15 @@
                 class="h-12 w-12 rounded-full object-cover"
               >
               <div class="ml-4">
-                <h3 class="text-lg font-medium text-gray-900">{{ testimonial.name }}</h3>
-                <p class="text-sm text-gray-500">{{ testimonial.title }}</p>
+                <h3 class="text-lg font-medium text-navy-900">{{ testimonial.name }}</h3>
+                <p class="text-sm text-navy-500">{{ testimonial.title }}</p>
               </div>
             </div>
             <div class="flex mb-3">
               <StarIcon v-for="i in 5" :key="i" class="h-5 w-5 text-yellow-400" />
             </div>
-            <p class="text-gray-600 italic mb-4">"{{ testimonial.quote }}"</p>
-            <div class="mt-4 pt-4 border-t border-gray-100 flex items-center text-sm text-gray-500">
+            <p class="text-navy-600 italic mb-4">"{{ testimonial.quote }}"</p>
+            <div class="mt-4 pt-4 border-t border-navy-100 flex items-center text-sm text-navy-500">
               <CalendarIcon class="h-4 w-4 mr-2" />
               {{ testimonial.date }}
             </div>
@@ -252,12 +234,12 @@
 
     <!-- FAQ Section -->
     <section class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="text-center mb-16">
-          <span class="inline-block px-4 py-1 text-sm font-semibold text-blue-600 bg-blue-100 rounded-full mb-4">
+          <span class="inline-block px-4 py-2 text-sm font-semibold text-green-600 bg-green-100 rounded-full mb-4">
             HAVE QUESTIONS?
           </span>
-          <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+          <h2 class="text-3xl font-bold text-navy-900 sm:text-4xl">
             Frequently Asked Questions
           </h2>
         </div>
@@ -267,21 +249,21 @@
             <div 
               v-for="(faq, index) in faqs"
               :key="index"
-              class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-md transition-shadow duration-300"
+              class="bg-white border border-navy-200 rounded-xl overflow-hidden hover:shadow-md transition-shadow"
             >
               <button 
                 @click="toggleFaq(index)"
                 class="w-full px-6 py-4 text-left focus:outline-none flex justify-between items-center"
               >
-                <span class="font-medium text-gray-900">{{ faq.question }}</span>
+                <span class="font-medium text-navy-900">{{ faq.question }}</span>
                 <ChevronDownIcon 
-                  class="h-5 w-5 text-blue-600 transition-transform duration-300"
+                  class="h-5 w-5 text-green-600 transition-transform"
                   :class="{ 'transform rotate-180': faq.open }"
                 />
               </button>
               <div 
                 v-show="faq.open"
-                class="px-6 pb-4 text-gray-600 transition-all duration-300"
+                class="px-6 pb-4 text-navy-600"
               >
                 {{ faq.answer }}
               </div>
@@ -292,24 +274,24 @@
     </section>
 
     <!-- Final CTA -->
-    <section class="bg-gradient-to-r from-blue-600 to-teal-500">
-      <div class="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24 text-center">
-        <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+    <section class="bg-green-600">
+      <div class="max-w-7xl mx-auto px-6 py-16 sm:px-8 lg:py-24 text-center">
+        <h2 class="text-3xl font-bold text-white sm:text-4xl">
           Ready to reclaim your clinical time?
         </h2>
-        <p class="mt-4 max-w-2xl mx-auto text-xl text-blue-100">
+        <p class="mt-4 max-w-2xl mx-auto text-xl text-green-100">
           Join hundreds of physicians who trust doc2doc.health with their clinical documentation.
         </p>
         <div class="mt-10 flex flex-wrap justify-center gap-4">
           <button 
             @click="navigateTo('/contact')" 
-            class="px-8 py-4 border border-transparent text-base font-medium rounded-full text-blue-600 bg-white hover:bg-gray-100 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+            class="px-8 py-4 border border-transparent text-base font-medium rounded-full text-green-600 bg-white hover:bg-navy-100 shadow-md"
           >
             Start Free Trial
           </button>
           <button 
             @click="navigateTo('/demo')" 
-            class="px-8 py-4 border-2 border-white text-base font-medium rounded-full text-white hover:bg-blue-700/30 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+            class="px-8 py-4 border-2 border-white text-base font-medium rounded-full text-white hover:bg-green-700 shadow-md"
           >
             Schedule Demo
           </button>
@@ -338,7 +320,7 @@ import {
 // Custom social icons
 const LinkedInIcon = {
   template: `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
       <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/>
     </svg>
   `
@@ -346,7 +328,7 @@ const LinkedInIcon = {
 
 const TwitterIcon = {
   template: `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
       <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
     </svg>
   `
@@ -354,7 +336,7 @@ const TwitterIcon = {
 
 const FacebookIcon = {
   template: `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
       <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
     </svg>
   `
@@ -423,50 +405,56 @@ const navigateTo = (path) => {
 </script>
 
 <style>
-@keyframes float {
-  0% {
-    transform: translateY(0px) translateX(0px);
-  }
-  50% {
-    transform: translateY(-20px) translateX(10px);
-  }
-  100% {
-    transform: translateY(0px) translateX(0px);
-  }
+/* Custom color palette */
+.bg-navy-900 {
+  background-color: #0f172a;
 }
-
-@keyframes bounce-right {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(4px);
-  }
+.bg-navy-800 {
+  background-color: #1e293b;
 }
-
-@keyframes pulse-slow {
-  0%, 100% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 0.1;
-  }
+.bg-navy-50 {
+  background-color: #f8fafc;
 }
-
-.animate-bounce-right {
-  animation: bounce-right 1s infinite;
+.text-navy-900 {
+  color: #0f172a;
 }
-
-.animate-pulse-slow {
-  animation: pulse-slow 3s infinite;
+.text-navy-700 {
+  color: #334155;
 }
-
-/* Smooth transitions */
-.transition-slow {
-  transition: all 0.5s ease;
+.text-navy-600 {
+  color: #475569;
 }
-
-.hover\:shadow-3xl:hover {
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+.text-navy-500 {
+  color: #64748b;
+}
+.text-navy-400 {
+  color: #94a3b8;
+}
+.text-navy-100 {
+  color: #f1f5f9;
+}
+.bg-green-600 {
+  background-color: #16a34a;
+}
+.bg-green-500 {
+  background-color: #22c55e;
+}
+.text-green-600 {
+  color: #16a34a;
+}
+.text-green-500 {
+  color: #22c55e;
+}
+.text-green-400 {
+  color: #4ade80;
+}
+.bg-green-100 {
+  background-color: #dcfce7;
+}
+.border-navy-200 {
+  border-color: #e2e8f0;
+}
+.border-navy-100 {
+  border-color: #f1f5f9;
 }
 </style>
