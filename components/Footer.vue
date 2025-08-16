@@ -1,18 +1,21 @@
 <template>
-  <footer class="bg-gray-900 z-[1000] text-white pt-16 pb-8">
+  <footer class="bg-blue-900 z-[1000] text-white pt-16 pb-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
         <!-- Column 1: Logo & Description -->
         <div class="space-y-6">
-          <NuxtLink to="/" class="text-2xl font-bold text-white hover:text-indigo-400 transition-colors duration-300">
-            Welkesa LLC
+          <NuxtLink to="/" class="text-2xl font-bold text-white hover:text-yellow-300 transition-colors duration-300">
+            doc2doc.health
           </NuxtLink>
-          <p class="text-gray-400 text-sm leading-relaxed">
+          <p class="text-blue-200 text-sm leading-relaxed">
             AI-Smart. Clinically Sharp. Your Virtual Scribe is an MD.
+          </p>
+          <p class="text-blue-300 text-xs italic">
+            A Welkesa LLC Company
           </p>
           <div class="flex space-x-4">
             <a v-for="social in socialLinks" :key="social.name" :href="social.url" target="_blank" rel="noopener" 
-               class="text-gray-400 hover:text-indigo-400 transition-colors duration-300">
+               class="text-blue-300 hover:text-yellow-300 transition-colors duration-300">
               <component :is="social.icon" class="h-5 w-5" />
               <span class="sr-only">{{ social.name }}</span>
             </a>
@@ -21,13 +24,13 @@
 
         <!-- Column 2: Quick Links -->
         <div>
-          <h3 class="text-sm font-semibold text-indigo-400 uppercase tracking-wider mb-6">
+          <h3 class="text-sm font-semibold text-yellow-300 uppercase tracking-wider mb-6">
             Quick Links
           </h3>
           <ul class="space-y-3">
             <li v-for="link in quickLinks" :key="link.name">
               <NuxtLink :to="link.path" 
-                        class="text-gray-400 hover:text-white transition-colors duration-300 text-sm">
+                        class="text-blue-200 hover:text-white transition-colors duration-300 text-sm">
                 {{ link.name }}
               </NuxtLink>
             </li>
@@ -36,47 +39,43 @@
 
         <!-- Column 3: Services -->
         <div>
-          <h3 class="text-sm font-semibold text-indigo-400 uppercase tracking-wider mb-6">
+          <h3 class="text-sm font-semibold text-yellow-300 uppercase tracking-wider mb-6">
             Services
           </h3>
           <ul class="space-y-3">
             <li v-for="service in services" :key="service">
-              <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 text-sm">
+              <NuxtLink to="/services" class="text-blue-200 hover:text-white transition-colors duration-300 text-sm">
                 {{ service }}
-              </a>
+              </NuxtLink>
             </li>
           </ul>
         </div>
 
-        <!-- Column 4: Newsletter -->
+        <!-- Column 4: Contact CTA -->
         <div>
-          <h3 class="text-sm font-semibold text-indigo-400 uppercase tracking-wider mb-6">
-            Stay Updated
+          <h3 class="text-sm font-semibold text-yellow-300 uppercase tracking-wider mb-6">
+            Contact Us
           </h3>
-          <p class="text-gray-400 text-sm mb-4">
-            Subscribe to our newsletter for the latest updates.
+          <p class="text-blue-200 text-sm mb-4">
+            Ready to reclaim your time? Schedule a consultation with our physician team.
           </p>
-          <form class="flex flex-col space-y-3">
-            <input type="email" placeholder="Your email" 
-                   class="bg-gray-800 text-white text-sm rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-            <button type="submit" 
-                    class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02]">
-              Subscribe
-            </button>
-          </form>
+          <NuxtLink to="/contact" 
+                    class="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] border border-yellow-300/20 hover:border-yellow-300/40 inline-block text-center">
+            Get Started
+          </NuxtLink>
         </div>
       </div>
 
       <!-- Divider -->
-      <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-        <p class="text-gray-500 text-sm">
-          &copy; {{ new Date().getFullYear() }} Welkesa. All rights reserved.
+      <div class="border-t border-blue-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-blue-400 text-sm">
+          &copy; {{ new Date().getFullYear() }} doc2doc.health (Welkesa LLC). All rights reserved.
         </p>
         <div class="flex space-x-6 mt-4 md:mt-0">
-          <a v-for="legal in legalLinks" :key="legal.name" :href="legal.path" 
-             class="text-gray-500 hover:text-gray-300 text-sm transition-colors duration-300">
+          <NuxtLink v-for="legal in legalLinks" :key="legal.name" :to="legal.path" 
+             class="text-blue-400 hover:text-yellow-300 text-sm transition-colors duration-300">
             {{ legal.name }}
-          </a>
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -99,13 +98,7 @@ const FacebookIcon = {
   template: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"/></svg>`
 };
 
-// Data
-const socialLinks = [
-  { name: 'Twitter', url: '#', icon: TwitterIcon },
-  { name: 'LinkedIn', url: '#', icon: LinkedinIcon },
-  { name: 'Facebook', url: '#', icon: FacebookIcon }
-];
-
+// Data - Using your exact paths
 const quickLinks = [
   { name: 'Home', path: '/' },
   { name: 'About Us', path: '/about' },
@@ -127,6 +120,12 @@ const legalLinks = [
   { name: 'Terms of Service', path: '/terms' },
   { name: 'HIPAA Compliance', path: '/hipaa' }
 ];
+
+const socialLinks = [
+  { name: 'Twitter', url: '#', icon: TwitterIcon },
+  { name: 'LinkedIn', url: '#', icon: LinkedinIcon },
+  { name: 'Facebook', url: '#', icon: FacebookIcon }
+];
 </script>
 
 <style scoped>
@@ -137,11 +136,12 @@ a, button {
 
 /* Active link styling */
 .router-link-active {
-  @apply text-white;
+  @apply text-white font-medium;
 }
 
 /* Gradient animation on hover for buttons */
 button:hover {
   background-size: 150% 150%;
+  @apply shadow-yellow-300/20;
 }
 </style>

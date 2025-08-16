@@ -120,7 +120,7 @@
               </p>
 <<<<<<< HEAD
               <a 
-                href="https://calendly.com/doc2doc-health/demo" 
+                href="https://calendly.com/doc2doc-health/contact" 
                 target="_blank"
                 class="inline-flex items-center justify-center w-full px-6 py-3 border border-transparent text-lg font-medium rounded-lg text-white bg-green-600 hover:bg-green-700 shadow-md"
               >
@@ -304,7 +304,7 @@
             Start Free Trial
           </button>
           <button 
-            @click="navigateTo('/demo')" 
+            @click="navigateTo('/contact')" 
             class="px-8 py-4 border-2 border-white text-base font-medium rounded-full text-white hover:bg-green-700 shadow-md"
           >
             Schedule Demo

@@ -4,4 +4,19 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxtjs/tailwindcss'],
   css: ['~/assets/css/main.css'],
+  
+  // Add this route rule to ignore API.php requests
+  routeRules: {
+    '/api.php': { ssr: false, prerender: false }
+  },
+  
+  // Optional: Nitro proxy configuration for development
+  nitro: {
+    devProxy: {
+      '/api': {
+        target: 'http://localhost',
+        changeOrigin: true,
+      }
+    }
+  }
 })
